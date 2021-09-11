@@ -1,0 +1,39 @@
+<form>
+  <script src="https://checkout.flutterwave.com/v3.js"></script>
+  <button type="button" onClick="makePayment()">Pay Now</button>
+</form>
+
+<script>
+  function makePayment() {
+    FlutterwaveCheckout({
+      public_key: "FLWPUBK_TEST-02c1baa411d15dbc0fab5ed59ab51fc6-X",
+      tx_ref: "RX1",
+      amount: 10,
+      currency: "NGN",
+      country: "NG",
+      payment_options: "8",
+      redirect_url: // specified redirect URL
+      "",
+      meta: {
+        consumer_id: 23,
+        consumer_mac: "92a3-912ba-1192a",
+      },
+      customer: {
+        email: "cornelius@gmail.com",
+        phone_number: "08102909304",
+        name: "Flutterwave Developers",
+      },
+      callback: function (data) {
+        console.log(data);
+      },
+      onclose: function() {
+        // close modal
+      },
+      customizations: {
+        title: "ZozCode",
+        description: "Create a quick payment Code",
+        logo: "https://zozcode.com/zoz.svg",
+      },
+    });
+  }
+</script>
